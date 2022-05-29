@@ -1,0 +1,10 @@
+{
+    "apiRoot": "",
+    "nefEMU": "",
+    "selfURL": "",
+    "keycloakURL": "",
+    "emuUsername": "",
+    "emuPassword": "", 
+    "keycloakClientID": "",
+    "keycloakRealmName": ""
+}

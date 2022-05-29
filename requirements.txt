@@ -1,0 +1,6 @@
+flask
+keycloak-client
+requests
+evolved5g
+datetime
+configparser

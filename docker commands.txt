@@ -1,0 +1,15 @@
+cd C:\Users\jsm.DESKTOP-7VJ0LVK\Desktop\Unipi\Research\Dockerized
+cd C:/Users/jsm.DESKTOP-7VJ0LVK/Desktop/Unipi/Research/Dockerized
+docker build --tag iqb .
+
+docker run --name netapp -p 5000:5000 iqb
+
+
+
+
+docker container create --name netapp iqb
+
+
+
+docker container rm netapp
+docker rmi iqb -f
