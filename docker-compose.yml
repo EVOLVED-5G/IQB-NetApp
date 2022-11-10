@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  IQB_netapp:
+    image: iqb_netapp_img
+    container_name: iqb_netapp
+    #list of environment variables
+    environment:
+      NETAPP_ID: "${netapp_id}"
+      NETAPP_NAME: "${netapp_name}"
+      NETAPP_IP: "${netapp_ip}"
+      NETAPP_SERVER_VAPP: "${netapp_server_vapp}"
+      NETAPP_PORT_5G: "${netapp_port_5g}"
+      NETAPP_PORT_WEB: "${netapp_port_web}"
+      NETAPP_PORT_VAPP: "${netapp_port_vapp}"
+      NEF_CALLBACK_URL: "${nef_callback_url}"
+      NEF_HOST: "${nef_host}"
+    build:
+    #path to src code
+      context: ./
+    ports:
+      - 8000:8000
+    # network bridge with nef_emulator_default to be able to reach the NEF emulator 
+    networks:
+      - nef_emulator_default
+      
+networks:
+  nef_emulator_default:
+    external: true
