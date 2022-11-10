@@ -221,6 +221,8 @@ def login():
     except Exception as e:
         if "Invalid user credentials" in str(e):
             return Response({'Invalid credentials.'},status=401,mimetype='application/json')
+        elif "Invalid client secret" in str(e):
+            return Response({'Invalid client secret (check config).'},status=401,mimetype='application/json')
         else: 
             return Response({'Invalid information.'},status=401,mimetype='application/json')
     return token
@@ -415,6 +417,30 @@ def location_update_subscription(data, subscription_id):
         else: #something else happened, re-throw the exception
             raise
 
+#Duplicate monitoring API for validation pipeline
+def monitor_subscription(data):
+    expire_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).isoformat() + "Z"
+    netapp_id = CONFIG['netappId']
+    host = emulator_utils.get_host_of_the_nef_emulator()
+    token = emulator_utils.get_token()
+    location_subscriber = LocationSubscriber(host, token.access_token)
+    try:
+        subscription = location_subscriber.create_subscription(
+            netapp_id=netapp_id,
+            external_id=data["externalId"],
+            notification_destination=data["notificationDestination"],
+            maximum_number_of_reports=data["maximumNumberOfReports"],
+            monitor_expire_time=data["monitorExpireTime"]
+        )
+        monitoring_response = subscription.to_dict()
+        
+        return monitoring_response
+    except ApiException as ex:
+        if ex.status == 409:
+            print("\nThere is already an active subscription for UE with external id", data["externalId"], '\n')
+            return False, "There is already an active subscription for UE with external id " + data["externalId"]
+        else: #something else happened, re-throw the exception
+            raise
 
 # Run Flask App
 if __name__ == '__main__':
