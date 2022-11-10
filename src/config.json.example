@@ -1,0 +1,32 @@
+{
+    "apiRoot": "",
+    "nefEMU": "",
+    "selfURL": "",
+    "keycloakURL": "",
+    "emuUsername": "",
+    "emuPassword": "", 
+    "netappId": "",
+    "providers": 
+    {
+        "client-netapp" : {
+            "keycloakRealmName": "",
+            "keycloakSecretKey": "f0d56f9d-6c1f-453e-8b98-f7837example"
+        },
+        "first-provider" : {
+            "keycloakRealmName": "EVOLVED-5G",
+            "keycloakSecretKey": ""
+        },
+        "second-provider" : {
+            "keycloakRealmName": "EVOLVED-5G",
+            "keycloakSecretKey": ""
+        }
+    },
+    "unittest":
+    {
+        "login": {
+            "username": "exampleusername",
+            "password": "examplepassword",
+            "provider": "second-provider"
+        }
+    }
+}
