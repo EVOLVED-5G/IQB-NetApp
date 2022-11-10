@@ -1,3 +1,14 @@
+# to a base image, add below required dependencies to install and execute commands  
+
+# base image in the template provides a linux environment with Python 3.10 
+
+# change base image if necessary 
+
+# dependencies of requirements.txt will be installed 
+
+# add/change commands to be executed in the container if necessary 
+
+ 
 
 FROM python:3.9
 
@@ -16,9 +27,9 @@ RUN pip3 install -r requirements.txt
 
 # copy all files and folders of the NetApp Python project into the image 
 
-COPY NetApp-v3.py /app   
-COPY emulator_utils.py /app
-COPY config.json /app
+COPY src/NetApp-v3.py /app   
+COPY src/emulator_utils.py /app
+COPY src/config.json /app
 
 #execute commands in the container 
 
