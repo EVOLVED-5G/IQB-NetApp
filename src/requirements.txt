@@ -1,6 +1,0 @@
-flask
-keycloak-client
-requests
-evolved5g==0.7.4
-datetime
-configparser
