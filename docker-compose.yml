@@ -45,6 +45,20 @@ services:
       #- nef_emulator_default
       - testnet
 
+  callbacks:
+    image: callbacks
+    container_name: callbacks
+    hostname: callbacks
+    build:
+    #path to src code
+      context: ./callbacks
+    ports:
+      - 5002:5002
+    # network bridge with nef_emulator_default to be able to reach the NEF emulator 
+    networks:
+      #- nef_emulator_default
+      - testnet  
+
 #volumes:
 #  keycloak:
 #    driver: local

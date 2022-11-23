@@ -1,0 +1,10 @@
+default_context:
+    git_email: "jsm@hotmail.gr"
+    repo_name: "IQB_NetApp"
+    remote_username: "JohnSt99"
+    token_repo: "GITHUB_TOKEN"
+    netapp_name: "IQB NetApp"
+    netapp_app: "NA"
+    netapp_service: "test"
+    netapp_port: "5000"
+    netapp_target_port: "5000"
