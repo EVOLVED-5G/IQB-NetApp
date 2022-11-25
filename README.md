@@ -24,4 +24,9 @@ In another window:
 
 ---
 
-In order to test callbacks use teh host's IP and port of the callbacks server in case NEF is running in a VM in the host or the container's name (callbacks:5002)
+In order to test callbacks use the host's IP and port of the callbacks server in case NEF is running in a VM in the host or the container's name (callbacks:5002)
+
+---
+
+Checking whether all containers are in the same network:
+`docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)`
