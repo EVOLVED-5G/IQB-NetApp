@@ -16,6 +16,8 @@ FROM python:3.9
 
 # adds a base image that provides a predefined environment-eg OS + specific programs installed 
   
+RUN apt-get update && apt-get install -y nano && apt-get clean
+
 
 # install dependencies 
 
@@ -27,14 +29,21 @@ RUN pip3 install -r requirements.txt
 
 # copy all files and folders of the NetApp Python project into the image 
 
+RUN mkdir -p /app/capif_onboarding
 COPY src/NetApp-v3.py /app   
 COPY src/emulator_utils.py /app
 COPY src/config.json /app
+COPY src/capif_registration.json /app
+
+#ONBOARD to CAPIF
+COPY src/prepare.sh /app
+CMD ["sh", "prepare.sh"]
+
 
 #execute commands in the container 
 
-CMD [ "python", "NetApp-v3.py", "--config", "container", "--host=0.0.0.0"] 
-ENTRYPOINT ["python3", "-u", "NetApp-v3.py"]
+#CMD [ "python", "NetApp-v3.py", "--config", "container", "--host=0.0.0.0"] 
+#ENTRYPOINT ["python3", "-u", "NetApp-v3.py"]
   
 
 # For executing the NetApp you iniciate main.py passing 2 parameters: 
