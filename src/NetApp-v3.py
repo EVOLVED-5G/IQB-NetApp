@@ -350,9 +350,13 @@ def location_read_all_subscriptions():
 def location_create_subscription(data):
     expire_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).isoformat() + "Z"
     netapp_id = CONFIG['netappId']
-    host = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
-    location_subscriber = LocationSubscriber(host, token.access_token)
+    location_subscriber = LocationSubscriber(
+                                                nef_url= emulator_utils.get_url_of_the_nef_emulator(),
+                                                nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
+                                                folder_path_for_certificates_and_capif_api_key= emulator_utils.get_folder_path_for_certificated_and_capif_api_key(),
+                                                capif_host= emulator_utils.get_capif_host(),
+                                                capif_https_port= emulator_utils.get_capif_https_port() 
+                                             )
     try:
         subscription = location_subscriber.create_subscription(
             netapp_id=netapp_id,
@@ -372,9 +376,13 @@ def location_create_subscription(data):
 
 def location_read_subscription(subscription_id):
     netapp_id = CONFIG['netappId']
-    host = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
-    location_subscriber = LocationSubscriber(host, token.access_token)
+    location_subscriber = LocationSubscriber(
+                                                nef_url= emulator_utils.get_url_of_the_nef_emulator(),
+                                                nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
+                                                folder_path_for_certificates_and_capif_api_key= emulator_utils.get_folder_path_for_certificated_and_capif_api_key(),
+                                                capif_host= emulator_utils.get_capif_host(),
+                                                capif_https_port= emulator_utils.get_capif_https_port() 
+                                             )
     try:
         subscription = location_subscriber.get_subscription(netapp_id, subscription_id)
         print('\n', subscription, '\n')
@@ -388,9 +396,13 @@ def location_read_subscription(subscription_id):
 
 def location_delete_subscription(subscription_id):
     netapp_id = CONFIG['netappId']
-    host = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
-    location_subscriber = LocationSubscriber(host, token.access_token)
+    location_subscriber = LocationSubscriber(
+                                                nef_url= emulator_utils.get_url_of_the_nef_emulator(),
+                                                nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
+                                                folder_path_for_certificates_and_capif_api_key= emulator_utils.get_folder_path_for_certificated_and_capif_api_key(),
+                                                capif_host= emulator_utils.get_capif_host(),
+                                                capif_https_port= emulator_utils.get_capif_https_port() 
+                                             )
     try: 
         subscription = location_subscriber.delete_subscription(netapp_id, subscription_id)
         print("Deleted subscription with id: " + subscription_id)
@@ -404,9 +416,13 @@ def location_delete_subscription(subscription_id):
             
 def location_update_subscription(data, subscription_id):
     netapp_id = CONFIG['netappId']
-    host = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
-    location_subscriber = LocationSubscriber(host, token.access_token)
+    location_subscriber = LocationSubscriber(
+                                                nef_url= emulator_utils.get_url_of_the_nef_emulator(),
+                                                nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
+                                                folder_path_for_certificates_and_capif_api_key= emulator_utils.get_folder_path_for_certificated_and_capif_api_key(),
+                                                capif_host= emulator_utils.get_capif_host(),
+                                                capif_https_port= emulator_utils.get_capif_https_port() 
+                                             )
     try:
         subscription = location_subscriber.update_subscription(
             netapp_id=netapp_id,
@@ -429,9 +445,13 @@ def location_update_subscription(data, subscription_id):
 def monitor_subscription(data):
     expire_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).isoformat() + "Z"
     netapp_id = CONFIG['netappId']
-    host = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
-    location_subscriber = LocationSubscriber(host, token.access_token)
+    location_subscriber = LocationSubscriber(
+                                                nef_url= emulator_utils.get_url_of_the_nef_emulator(),
+                                                nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
+                                                folder_path_for_certificates_and_capif_api_key= emulator_utils.get_folder_path_for_certificated_and_capif_api_key(),
+                                                capif_host= emulator_utils.get_capif_host(),
+                                                capif_https_port= emulator_utils.get_capif_https_port() 
+                                             )
     try:
         subscription = location_subscriber.create_subscription(
             netapp_id=netapp_id,
