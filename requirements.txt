@@ -1,6 +1,6 @@
 flask==2.2.2
 keycloak-client==0.15.4
 requests==2.26.0
-evolved5g
+evolved5g==0.8.7
 datetime==4.7
 configparser==5.3.0
