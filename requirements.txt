@@ -1,6 +1,6 @@
 flask
 keycloak-client
 requests
-evolved5g==0.7.4
+evolved5g
 datetime
 configparser
