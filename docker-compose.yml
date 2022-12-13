@@ -34,7 +34,17 @@ services:
       NETAPP_PORT_WEB: "${netapp_port_web}"
       NETAPP_PORT_VAPP: "${netapp_port_vapp}"
       NEF_CALLBACK_URL: "${nef_callback_url}"
-      NEF_HOST: "${nef_host}"
+      KEYCLOAK_ADDRESS: "http://keycloak:8080/auth/"
+      NEF_ADDRESS: "http://nef_emulator-backend-1:80"
+      NEF_USER: "admin@my-email.com"
+      NEF_PASSWORD: "pass"
+      VAPP_ADDRESS: "NA"
+      PATH_TO_CERTS: "/app/capif_onboarding"
+      CAPIF_HOSTNAME: "capifcore"
+      CAPIF_PORT_HTTP: "8080"
+      CAPIF_PORT_HTTPS: "443"
+      CALLBACK_ADDRESS: "callbacks:5002"
+      FRONTEND_ADDRESS: "NA"
     build:
     #path to src code
       context: ./
