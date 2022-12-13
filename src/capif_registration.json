@@ -1,5 +1,5 @@
 {
-    "folder_to_store_certificate": "/app/capif_onboarding",
+    "folder_to_store_certificates": "/app/capif_onboarding",
     "capif_host": "capifcore",
     "capif_http_port": 8080,
     "capif_https_port": 443,
