@@ -1,6 +1,6 @@
 {
     "apiRoot": "http://localhost:4444",
-    "nefEMU": "http://nef_emulator-backend-1:8888",
+    "nefEMU": "http://nef_emulator-backend-1:80",
     "selfURL": "https://localhost:5000",
     "keycloakURL": "http://keycloak:8080/auth/",
     "emuUsername": "admin@my-email.com",
