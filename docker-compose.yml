@@ -18,7 +18,7 @@ services:
       - ./keycloak:/tmp/import
     networks:
       #- nef_emulator_default
-      - testnet
+      - services_default
 
   IQB_netapp:
     image: iqb_netapp_img
@@ -43,7 +43,7 @@ services:
     # network bridge with nef_emulator_default to be able to reach the NEF emulator 
     networks:
       #- nef_emulator_default
-      - testnet
+      - services_default
 
   callbacks:
     image: callbacks
@@ -57,7 +57,7 @@ services:
     # network bridge with nef_emulator_default to be able to reach the NEF emulator 
     networks:
       #- nef_emulator_default
-      - testnet  
+      - services_default 
 
 #volumes:
 #  keycloak:
@@ -68,12 +68,7 @@ services:
 #      device: /tmp/keycloak/config
       
 networks:
-  testnet:
-    driver: bridge
-    ipam:
-      driver: default 
-      config:
-        - subnet: 192.168.0.0/24
-          gateway: 192.168.0.1
+  services_default:
+    external: true
   #nef_emulator_default:
   #  external: true
