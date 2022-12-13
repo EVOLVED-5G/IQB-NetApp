@@ -15,11 +15,11 @@ import time
 import os
 import configparser
 with open('config.json', 'r') as jsonfile: CONFIG=json.load(jsonfile)
-    
+
 apiRoot = CONFIG['apiRoot']
-nefEMU = CONFIG['nefEMU']
+nefEMU = os.environ['NEF_ADDRESS']
 selfURL = CONFIG['selfURL']
-keycloakURL = CONFIG['keycloakURL']
+keycloakURL = os.environ['KEYCLOAK_ADDRESS']
 unittests = CONFIG['unittest']
 
 nefToken = ''
@@ -28,8 +28,8 @@ global nefHeaders
 # Initiate Flask App
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-app.emuUsername = CONFIG['emuUsername']
-app.emuPassword = CONFIG['emuPassword']
+app.emuUsername = os.environ['NEF_USER']
+app.emuPassword = os.environ['NEF_PASSWORD']
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.INFO)
@@ -324,7 +324,7 @@ NEF SDK Functionality   |
 '''
 
 def location_read_all_subscriptions():
-    netapp_id = CONFIG['netappId']
+    netapp_id = os.environ['NETAPP_ID']
     # host = emulator_utils.get_url_of_the_nef_emulator()
     # token = emulator_utils.get_token_for_nef_emulator()
     location_subscriber = LocationSubscriber(
@@ -349,7 +349,7 @@ def location_read_all_subscriptions():
 
 def location_create_subscription(data):
     expire_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).isoformat() + "Z"
-    netapp_id = CONFIG['netappId']
+    netapp_id = os.environ['NETAPP_ID']
     location_subscriber = LocationSubscriber(
                                                 nef_url= emulator_utils.get_url_of_the_nef_emulator(),
                                                 nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
@@ -375,7 +375,7 @@ def location_create_subscription(data):
             raise
 
 def location_read_subscription(subscription_id):
-    netapp_id = CONFIG['netappId']
+    netapp_id = os.environ['NETAPP_ID']
     location_subscriber = LocationSubscriber(
                                                 nef_url= emulator_utils.get_url_of_the_nef_emulator(),
                                                 nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
@@ -395,7 +395,7 @@ def location_read_subscription(subscription_id):
             raise
 
 def location_delete_subscription(subscription_id):
-    netapp_id = CONFIG['netappId']
+    netapp_id = os.environ['NETAPP_ID']
     location_subscriber = LocationSubscriber(
                                                 nef_url= emulator_utils.get_url_of_the_nef_emulator(),
                                                 nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
@@ -415,7 +415,7 @@ def location_delete_subscription(subscription_id):
             raise
             
 def location_update_subscription(data, subscription_id):
-    netapp_id = CONFIG['netappId']
+    netapp_id = os.environ['NETAPP_ID']
     location_subscriber = LocationSubscriber(
                                                 nef_url= emulator_utils.get_url_of_the_nef_emulator(),
                                                 nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
@@ -444,7 +444,7 @@ def location_update_subscription(data, subscription_id):
 #Duplicate monitoring API for validation pipeline
 def monitor_subscription(data):
     expire_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).isoformat() + "Z"
-    netapp_id = CONFIG['netappId']
+    netapp_id = os.environ['NETAPP_ID']
     location_subscriber = LocationSubscriber(
                                                 nef_url= emulator_utils.get_url_of_the_nef_emulator(),
                                                 nef_bearer_access_token= emulator_utils.get_token_for_nef_emulator().access_token,
