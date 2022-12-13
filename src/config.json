@@ -10,15 +10,15 @@
     {
         "client-netapp" : {
             "keycloakRealmName": "EVOLVED-5G",
-            "keycloakSecretKey": "1b2a0136-2a58-43a2-afcc-51871eb9e354"
+            "keycloakSecretKey": "f478fa31-e49a-4da7-b0d1-751ebb21452f"
         },
         "first-provider" : {
             "keycloakRealmName": "EVOLVED-5G",
-            "keycloakSecretKey": "bff8ca04-0157-473c-9d07-d087cd387c31"
+            "keycloakSecretKey": "3a3e3831-6615-4a61-9bb8-c7c71d33c836"
         },
         "second-provider" : {
             "keycloakRealmName": "EVOLVED-5G",
-            "keycloakSecretKey": "0159c7e8-c735-4195-96ae-a6dead380055"
+            "keycloakSecretKey": "49a6b53c-e7b4-40a5-9506-c8a40351edb4"
         }
     },
     "unittest":
