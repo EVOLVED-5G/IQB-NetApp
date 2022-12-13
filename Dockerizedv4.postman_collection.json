@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "fea36f5d-9617-4278-89c4-98fe712faa59",
+		"name": "Dockerizedv4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Deprecated",
+			"item": [
+				{
+					"name": "get_token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.100:8080/auth/realms/IQB-NetApp/protocol/openid-connect/auth?client_id=client-netapp&response_type=code&state=fj8o3n7bdy1op5",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"100"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"realms",
+								"IQB-NetApp",
+								"protocol",
+								"openid-connect",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "client-netapp"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "state",
+									"value": "fj8o3n7bdy1op5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/retrieveKey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"suppFeat\": \"string\",\r\n  \"afId\": \"string\",\r\n  \"aKId\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/retrieveKey",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"retrieveKey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/readSubscriptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/readSubscriptions?afId=test1",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"readSubscriptions"
+							],
+							"query": [
+								{
+									"key": "afId",
+									"value": "test1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/readSubscription",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/readSubscription?afId=test121&subscriptionId=sub125125",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"readSubscription"
+							],
+							"query": [
+								{
+									"key": "afId",
+									"value": "test121"
+								},
+								{
+									"key": "subscriptionId",
+									"value": "sub125125"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/createSubscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"afAppId\": \"string\",\r\n  \"gpsi\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/createSubscription?afId=test56",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"createSubscription"
+							],
+							"query": [
+								{
+									"key": "afId",
+									"value": "test56"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/modifySubscription",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"afAppId\": \"string\",\r\n  \"gpsi\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/modifySubscription?afId=test121&subscriptionId=sub125125",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"modifySubscription"
+							],
+							"query": [
+								{
+									"key": "afId",
+									"value": "test121"
+								},
+								{
+									"key": "subscriptionId",
+									"value": "sub125125"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/editSubscription",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"afAppId\": \"string\",\r\n  \"gpsi\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/editSubscription?afId=test121&subscriptionId=sub125125",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"editSubscription"
+							],
+							"query": [
+								{
+									"key": "afId",
+									"value": "test121"
+								},
+								{
+									"key": "subscriptionId",
+									"value": "sub125125"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deleteSubscription",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{netapp_location}}/deleteSubscription?afId=test121&subscriptionId=sub125125",
+							"host": [
+								"{{netapp_location}}"
+							],
+							"path": [
+								"deleteSubscription"
+							],
+							"query": [
+								{
+									"key": "afId",
+									"value": "test121"
+								},
+								{
+									"key": "subscriptionId",
+									"value": "sub125125"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3gpp-monitoring-event read all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDMxMjAzMjUsInN1YiI6IjEifQ.x5R635-U_tIzXx4yyu32wgADH2La24WwBlXT6gPjqI4",
+						"description": "terminal token",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/api/v1/3gpp-monitoring-event/v1/123/subscriptions?skip=0&limit=100",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"3gpp-monitoring-event",
+						"v1",
+						"123",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3gpp-monitoring-event read sub",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDMxMjAzMjUsInN1YiI6IjEifQ.x5R635-U_tIzXx4yyu32wgADH2La24WwBlXT6gPjqI4",
+						"description": "terminal token",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/api/v1/3gpp-monitoring-event/v1/123/subscriptions/636d00654aa478a33578fde6",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"3gpp-monitoring-event",
+						"v1",
+						"123",
+						"subscriptions",
+						"636d00654aa478a33578fde6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3gpp-monitoring-event create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDMxMjAzMjUsInN1YiI6IjEifQ.x5R635-U_tIzXx4yyu32wgADH2La24WwBlXT6gPjqI4",
+						"description": "terminal token",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"10002@domain.com\",\r\n  \"notificationDestination\": \"http://callbacks:5002/monitoring/callback\",\r\n  \"monitoringType\": \"LOCATION_REPORTING\",\r\n  \"maximumNumberOfReports\": 100,\r\n  \"monitorExpireTime\": \"2022-11-29T13:40:39.708Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/api/v1/3gpp-monitoring-event/v1/123/subscriptions",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"3gpp-monitoring-event",
+						"v1",
+						"123",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3gpp-monitoring-event update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDMxMjAzMjUsInN1YiI6IjEifQ.x5R635-U_tIzXx4yyu32wgADH2La24WwBlXT6gPjqI4",
+						"description": "terminal token",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"10002@domain.com\",\r\n  \"notificationDestination\": \"http://callbacks:5002/monitoring/callback\",\r\n  \"monitoringType\": \"LOCATION_REPORTING\",\r\n  \"maximumNumberOfReports\": 111,\r\n  \"monitorExpireTime\": \"2022-11-30T14:12:24.390Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/api/v1/3gpp-monitoring-event/v1/123/subscriptions/63833e0342fe76525671980b",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"3gpp-monitoring-event",
+						"v1",
+						"123",
+						"subscriptions",
+						"63833e0342fe76525671980b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3gpp-monitoring-event delete sub",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDMxMjAzMjUsInN1YiI6IjEifQ.x5R635-U_tIzXx4yyu32wgADH2La24WwBlXT6gPjqI4",
+						"description": "terminal token",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/api/v1/3gpp-monitoring-event/v1/123/subscriptions/636d00654aa478a33578fde6",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"3gpp-monitoring-event",
+						"v1",
+						"123",
+						"subscriptions",
+						"636d00654aa478a33578fde6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Provider",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"sampleuser\",\r\n  \"password\": \"test\",\r\n  \"provider\": \"first-provider\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/login",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{netapp_location}}/logout",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MISUSE",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDMxMjAzMjUsInN1YiI6IjEifQ.x5R635-U_tIzXx4yyu32wgADH2La24WwBlXT6gPjqI4",
+						"description": "terminal token",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{netapp_location}}/api/v1/3gpp-monitoring-event/v1/123/subscriptions?skip=0&limit=100",
+					"host": [
+						"{{netapp_location}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"3gpp-monitoring-event",
+						"v1",
+						"123",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

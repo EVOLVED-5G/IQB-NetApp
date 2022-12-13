@@ -1,5 +1,5 @@
 {
-    "folder_to_store_certificate": "/app/capif_onboarding",
+    "folder_to_store_certificates": "/app/capif_onboarding",
     "capif_host": "capifcore",
     "capif_http_port": 8080,
     "capif_https_port": 443,
@@ -10,7 +10,7 @@
     "csr_common_name": "test_app_common_name",
     "csr_organizational_unit": "iqb_netapp_ou",
     "csr_organization": "iqb_netapp_o",
-    "csr_locality": "Athens",
+    "crs_locality": "Athens",
     "csr_state_or_province_name": "Athens",
     "csr_country_name": "GR",
     "csr_email_address": "test@example.com"
