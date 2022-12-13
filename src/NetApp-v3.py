@@ -17,9 +17,9 @@ import configparser
 with open('config.json', 'r') as jsonfile: CONFIG=json.load(jsonfile)
 
 apiRoot = CONFIG['apiRoot']
-nefEMU = os.environ['NEF_ADDRESS']
+nefEMU = "http://" + os.environ['NEF_ADDRESS']
 selfURL = CONFIG['selfURL']
-keycloakURL = os.environ['KEYCLOAK_ADDRESS']
+keycloakURL = "http://" + os.environ['KEYCLOAK_ADDRESS']
 unittests = CONFIG['unittest']
 
 nefToken = ''
