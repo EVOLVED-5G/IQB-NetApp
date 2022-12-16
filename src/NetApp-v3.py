@@ -10,16 +10,15 @@ warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWa
 from evolved5g.swagger_client.rest import ApiException
 from evolved5g.sdk import LocationSubscriber
 import emulator_utils
+import keycloak_utils
 import datetime
 import time
 import os
 import configparser
 with open('config.json', 'r') as jsonfile: CONFIG=json.load(jsonfile)
 
-apiRoot = CONFIG['apiRoot']
-nefEMU = "http://" + os.environ['NEF_ADDRESS']
-selfURL = CONFIG['selfURL']
-keycloakURL = "http://" + os.environ['KEYCLOAK_ADDRESS']
+nefEMU = emulator_utils.get_url_of_the_nef_emulator()
+keycloakURL = keycloak_utils.get_url()
 unittests = CONFIG['unittest']
 
 nefToken = ''
@@ -36,11 +35,6 @@ log.setLevel(logging.INFO)
 
 #check emu availability
 def check_emus():
-    try:
-        response = requests.get(apiRoot, verify=False) #SEC removed certificate checking by adding verify=False
-        print ("-------dummy API is accessible-------\n")
-    except Exception as e:
-        print ("-------dummy API not accessible-------\n")
     try:
         response = requests.get(nefEMU, verify=False) #SEC removed certificate checking by adding verify=False
         print ("----------EMU is accessible----------\n")
@@ -71,14 +65,11 @@ def log_in_NEF_Emu():
         raise e
 
 #Configure clients for KeycloakOpenID
-confproviders = CONFIG['providers']
-providers = {}
-for i in confproviders:
-    providers[i] = {"keycloakRealmName": confproviders[i]['keycloakRealmName'], "keycloakSecretKey" : confproviders[i]['keycloakSecretKey']}
-
+providers = keycloak_utils.get_clients()
+#print(providers)
 kc_oidc = {}
 for i in providers:
-    kc_oidc[i] = KeycloakOpenID(server_url=keycloakURL, client_id = i, realm_name = providers[i]['keycloakRealmName'], client_secret_key =  providers[i]['keycloakSecretKey'])
+    kc_oidc[i] = KeycloakOpenID(server_url=keycloakURL + '/', client_id = i, realm_name = providers[i]['realm'], client_secret_key =  providers[i]['secret'])
 
 '''
 __________________________
@@ -477,7 +468,7 @@ if __name__ == '__main__':
     """
  ┌───────────────────────────────────────────────────────────┐
  │▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│
- │▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    IQB NetApp v 2.2  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│
+ │▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    IQB NetApp v 2.4  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│
  │▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒│
  └───────────────────────────────────────────────────────────┘
     \n""")

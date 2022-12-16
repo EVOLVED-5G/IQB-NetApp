@@ -26,7 +26,7 @@ services:
     hostname: iqb_netapp
     #list of environment variables
     environment:
-      NETAPP_ID: "${netapp_id}"
+      NETAPP_ID: "myNetapp"
       NETAPP_NAME: "${netapp_name}"
       NETAPP_IP: "${netapp_ip}"
       NETAPP_SERVER_VAPP: "${netapp_server_vapp}"
@@ -34,8 +34,11 @@ services:
       NETAPP_PORT_WEB: "${netapp_port_web}"
       NETAPP_PORT_VAPP: "${netapp_port_vapp}"
       NEF_CALLBACK_URL: "${nef_callback_url}"
-      KEYCLOAK_ADDRESS: "keycloak:8080/auth/"
-      NEF_ADDRESS: "nef_emulator-backend-1:80"
+      KEYCLOAK_ADDRESS: "keycloak:8080/auth"
+      KEYCLOAK_REALM: "EVOLVED-5G"
+      KEYCLOAK_ADMIN: "admin"
+      KEYCLOAK_ADMIN_PASSWORD: "admin"
+      NEF_ADDRESS: "nef_emulator_backend_1:80"
       NEF_USER: "admin@my-email.com"
       NEF_PASSWORD: "pass"
       VAPP_ADDRESS: "NA"

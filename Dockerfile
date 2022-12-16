@@ -16,7 +16,7 @@ FROM python:3.9
 
 # adds a base image that provides a predefined environment-eg OS + specific programs installed 
   
-RUN apt-get update && apt-get install -y nano && apt-get clean
+RUN apt-get update && apt-get install -y nano && apt-get install -y jq && apt-get clean
 
 
 # install dependencies 
@@ -34,6 +34,9 @@ COPY src/NetApp-v3.py /app
 COPY src/emulator_utils.py /app
 COPY src/config.json /app
 COPY src/capif_registration.json /app
+
+COPY src/keycloak.sh /app
+COPY src/keycloak_utils.py /app
 
 #ONBOARD to CAPIF
 COPY src/prepare.sh /app
