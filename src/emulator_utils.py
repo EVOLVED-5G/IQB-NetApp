@@ -3,12 +3,13 @@ from evolved5g.swagger_client import LoginApi, User
 from evolved5g.swagger_client.models import Token
 import json
 import configparser
+import os
 with open('config.json', 'r') as jsonfile: CONFIG=json.load(jsonfile)
 
 def get_token_for_nef_emulator() -> Token:
 
-    username = CONFIG['emuUsername']
-    password = CONFIG['emuPassword']
+    username = os.environ['NEF_USER']
+    password = os.environ['NEF_PASSWORD']
     # User name and pass matches are set in the .env of the docker of NEF_EMULATOR. See
     # https://github.com/EVOLVED-5G/NEF_emulator
     configuration = swagger_client.Configuration()
@@ -30,7 +31,7 @@ def get_api_client(token) -> swagger_client.ApiClient:
 
 
 def get_url_of_the_nef_emulator() -> str:
-    return CONFIG['nefEMU']
+    return "http://" + os.environ['NEF_ADDRESS']
 
 def get_folder_path_for_certificated_and_capif_api_key()->str:
     """
@@ -38,7 +39,8 @@ def get_folder_path_for_certificated_and_capif_api_key()->str:
     It contains the certificates and the api.key needed to communicate with the CAPIF server
     :return:
     """
-    return "/app/capif_onboarding"
+    return os.environ['PATH_TO_CERTS']
+    #return "/app/capif_onboarding"
 
 def get_capif_host()->str:
     """
@@ -46,11 +48,13 @@ def get_capif_host()->str:
     127.0.0.1       capifcore
     :return:
     """
-    return "capifcore"
+    return os.environ['CAPIF_HOSTNAME']
+    #return "capifcore"
 
 def get_capif_https_port()->int:
     """
     This is the default https port when running CAPIF via docker
     :return:
     """
-    return 443
+    return os.environ['CAPIF_PORT_HTTPS']
+    #return 443

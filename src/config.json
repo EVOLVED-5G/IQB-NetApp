@@ -1,25 +1,9 @@
 {
-    "apiRoot": "http://localhost:4444",
-    "nefEMU": "http://nef_emulator-backend-1:80",
-    "selfURL": "https://localhost:5000",
-    "keycloakURL": "http://keycloak:8080/auth/",
-    "emuUsername": "admin@my-email.com",
-    "emuPassword": "pass", 
-    "netappId": "myNetapp",
     "providers": 
     {
-        "client-netapp" : {
-            "keycloakRealmName": "EVOLVED-5G",
-            "keycloakSecretKey": "f478fa31-e49a-4da7-b0d1-751ebb21452f"
-        },
-        "first-provider" : {
-            "keycloakRealmName": "EVOLVED-5G",
-            "keycloakSecretKey": "3a3e3831-6615-4a61-9bb8-c7c71d33c836"
-        },
-        "second-provider" : {
-            "keycloakRealmName": "EVOLVED-5G",
-            "keycloakSecretKey": "49a6b53c-e7b4-40a5-9506-c8a40351edb4"
-        }
+        "client-netapp" : "EVOLVED-5G",
+        "first-provider" : "EVOLVED-5G",
+        "second-provider" : "EVOLVED-5G"
     },
     "unittest":
     {
