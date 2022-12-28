@@ -51,6 +51,8 @@ services:
     build:
     #path to src code
       context: ./
+    depends_on:
+      - keycloak
     ports:
       - 5000:5000
     # network bridge with nef_emulator_default to be able to reach the NEF emulator 
