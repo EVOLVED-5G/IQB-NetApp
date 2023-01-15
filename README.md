@@ -6,6 +6,13 @@ Setting up the environment:
 - Then start the NEF emulator using `make up` in the NEF directory
 - Make sure the NetApp is not already registered in the mongodb (http://0.0.0.0:8082/db/capif/user)
 
+In order to start the services:
+---
+- Execute `docker-compsoe build` from this directory. The three containers should start. In order for the NetApp to be functional, the keycloak instance must fully load (1-2 min).
+
+<br />
+<br />
+<br />
 <br />
 
 Starting the services and configuring the IdP (Keycloak):
