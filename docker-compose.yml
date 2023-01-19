@@ -82,8 +82,8 @@ services:
 #      type: none
 #      device: /tmp/keycloak/config
       
-networks:
-  services_default:
-    external: true
+#networks:
+#  services_default:
+#    external: true
   #nef_emulator_default:
   #  external: true
