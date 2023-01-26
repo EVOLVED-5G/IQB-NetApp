@@ -86,6 +86,6 @@ services:
       
 networks:
   services_default:
-    external: true
+    #external: true
   #nef_emulator_default:
   #  external: true
