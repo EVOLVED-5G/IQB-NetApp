@@ -2,7 +2,7 @@ version: '3'
 
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:15.0.2
+    image: keycloak_img #quay.io/keycloak/keycloak:15.0.2
     container_name: keycloak
     hostname: keycloak
     ports: 
@@ -14,8 +14,10 @@ services:
       #- KEYCLOAK_ADMIN=admin
       #- KEYCLOAK_ADMIN_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/import/realm-export.json
-    volumes: 
-      - ./keycloak:/tmp/import
+    #volumes: 
+    #  - ./keycloak:/tmp/import
+    build:
+      context: ./keycloak
     networks:
       #- nef_emulator_default
       - services_default
@@ -84,6 +86,6 @@ services:
       
 networks:
   services_default:
-    external: true
+    #external: true
   #nef_emulator_default:
   #  external: true

@@ -8,7 +8,7 @@ Setting up the environment:
 
 In order to start the services:
 ---
-- Execute `docker-compsoe build` from this directory. The three containers should start. In order for the NetApp to be functional, the keycloak instance must fully load (1-2 min).
+- Execute `docker-compose build && docker-compose up` from this directory. The three containers should start. In order for the NetApp to be functional, the keycloak instance must fully load (1-2 min).
 
 
 Running Unit Tests:
