@@ -251,8 +251,8 @@ def catch_misuse(path):
         kc_oidc[session['provider']].logout(session['access_token']['refresh_token'])
         session.clear()
     except Exception as e:
-        return Response({'Unknown error occurred'},status=500,mimetype='application/json')
-    return Response({'De-authenticated due to misuse'},status=200,mimetype='application/json')
+        pass
+    return Response({'De-authenticated due to misuse'},status=403,mimetype='application/json')
 
     
 '''
