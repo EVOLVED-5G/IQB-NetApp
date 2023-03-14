@@ -34,7 +34,7 @@ docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}
 <h6>Starting the services and configuring the IdP (Keycloak):</h6>
 
 - <h6>From this directory execute `docker-compose build` </h6>
-- <h6>Execute `docker-compose up` and wait for keycloak to fully boot (check if it is accessible in URL http://localhost:8090/auth) </h6>
+- <h6>Execute `docker-compose up` and wait for keycloak to fully boot (check if it is accessible in URL http://localhost:8980/auth) </h6>
 - <h6>In keycloak create a new user with name `sampleuser` and set the toggles `User Enabled` and `Email Verified` to `ON`. </h6>
 - <h6>From the credentials tab set the password to `test` and set the toggle `Temporary` to `OFF`. </h6>
 
