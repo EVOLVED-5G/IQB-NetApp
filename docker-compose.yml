@@ -40,7 +40,7 @@ services:
       KEYCLOAK_REALM: "EVOLVED-5G"
       KEYCLOAK_ADMIN: "admin"
       KEYCLOAK_ADMIN_PASSWORD: "admin"
-      NEF_ADDRESS: "nef_emulator_backend_1:80"
+      NEF_ADDRESS: "nef_emulator-reverse_proxy-1:443"
       NEF_USER: "admin@my-email.com"
       NEF_PASSWORD: "pass"
       VAPP_ADDRESS: "NA"
@@ -86,6 +86,6 @@ services:
       
 networks:
   services_default:
-    #external: true
+     external: true
   #nef_emulator_default:
   #  external: true

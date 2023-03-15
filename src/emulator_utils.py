@@ -1,24 +1,34 @@
 from evolved5g import swagger_client
-from evolved5g.swagger_client import LoginApi, User
+from evolved5g.swagger_client import LoginApi, ApiClient, User, Configuration
 from evolved5g.swagger_client.models import Token
+from evolved5g.sdk import LocationSubscriber
 import json
 import configparser
 import os
 with open('config.json', 'r') as jsonfile: CONFIG=json.load(jsonfile)
 
-def get_token_for_nef_emulator() -> Token:
+def get_location_subscriber() -> LocationSubscriber:
+    location_subscriber = LocationSubscriber(
+                                                nef_url= get_url_of_the_nef_emulator(),
+                                                nef_bearer_access_token= get_nef_token().access_token,
+                                                folder_path_for_certificates_and_capif_api_key= get_certificates_folder(),
+                                                capif_host= get_capif_host(),
+                                                capif_https_port= get_capif_https_port() 
+                                            )
+    return location_subscriber
 
+
+def get_nef_token() -> Token:
     username = os.environ['NEF_USER']
     password = os.environ['NEF_PASSWORD']
-    # User name and pass matches are set in the .env of the docker of NEF_EMULATOR. See
-    # https://github.com/EVOLVED-5G/NEF_emulator
-    configuration = swagger_client.Configuration()
-    # The host of the 5G API (emulator)
+    configuration = Configuration()
     configuration.host = get_url_of_the_nef_emulator()
-    api_client = swagger_client.ApiClient(configuration=configuration)
+    configuration.verify_ssl = False
+    api_client = ApiClient(configuration=configuration)
     api_client.select_header_content_type(["application/x-www-form-urlencoded"])
     api = LoginApi(api_client)
     token = api.login_access_token_api_v1_login_access_token_post("", username, password, "", "", "")
+
     return token
 
 
@@ -31,9 +41,9 @@ def get_api_client(token) -> swagger_client.ApiClient:
 
 
 def get_url_of_the_nef_emulator() -> str:
-    return "http://" + os.environ['NEF_ADDRESS']
+    return "https://" + os.environ['NEF_ADDRESS']
 
-def get_folder_path_for_certificated_and_capif_api_key()->str:
+def get_certificates_folder()->str:
     """
     This is the folder that was provided when you registered the NetApp to CAPIF.
     It contains the certificates and the api.key needed to communicate with the CAPIF server
