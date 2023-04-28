@@ -1,4 +1,5 @@
 flask==2.2.2
+werkzeug==2.2.2
 keycloak-client==0.15.4
 requests==2.26.0
 evolved5g
