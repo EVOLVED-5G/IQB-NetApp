@@ -8,4 +8,4 @@ echo "Stripping access token..."
 access_token=$(echo $token | sed 's/."access_token":"//g' | sed 's/".*//g')
 #echo "$access_token"
 echo "Creating user..."
-curl --silent ${KEYCLOAK_ADDRESS}/admin/realms/EVOLVED-5G/users -H "Content-Type:  application/json" -H "Authorization: bearer $access_token" --data '{"username": "sampleuser", "credentials":[{"type":"password","value":"test","temporary":false}], "firstName": "testname", "lastName": "testlastname", "email": "test@gmail.com", "enabled": "true"}'
+curl --silent ${KEYCLOAK_ADDRESS}/admin/realms/${KEYCLOAK_REALM}/users -H "Content-Type:  application/json" -H "Authorization: bearer $access_token" --data '{"username": "sampleuser", "credentials":[{"type":"password","value":"test","temporary":false}], "firstName": "testname", "lastName": "testlastname", "email": "test@gmail.com", "enabled": "true"}'
