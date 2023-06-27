@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iqbit-configmap
+data:
+  NETAPP_ID: "myNetapp"
+  KEYCLOAK_ADDRESS: "keycloak:8980/auth"
+  KEYCLOAK_REALM: "EVOLVED-5G"
+  KEYCLOAK_ADMIN: "admin"
+  KEYCLOAK_ADMIN_PASSWORD: "admin"
+  NEF_ADDRESS: "nefemu:4443"
+  NEF_USER: "admin@my-email.com"
+  NEF_PASSWORD: "pass"
+  VAPP_ADDRESS: "NA"
+  PATH_TO_CERTS: "/app/capif_onboarding"
+  CAPIF_HOSTNAME: "capifcore"
+  CAPIF_PORT_HTTP: "8080"
+  CAPIF_PORT_HTTPS: "443"
+  CALLBACK_ADDRESS: "callbacks:5002"
+  FRONTEND_ADDRESS: "NA"

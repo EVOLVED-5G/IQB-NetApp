@@ -1,0 +1,140 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iqbnetapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iqbnetapp
+  template:
+    metadata:
+      labels:
+        app: iqbnetapp
+    spec:
+      containers:
+        - name: iqbnetapp
+          image: johnst99/iqb_netapp_img
+          imagePullPolicy: Always 
+          env:
+            - name: NETAPP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: NETAPP_ID
+            - name: KEYCLOAK_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: KEYCLOAK_ADDRESS
+            - name: KEYCLOAK_REALM
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: KEYCLOAK_REALM
+            - name: KEYCLOAK_ADMIN
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: KEYCLOAK_ADMIN
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: KEYCLOAK_ADMIN_PASSWORD
+            - name: CAPIF_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: CAPIF_HOSTNAME
+            - name: CAPIF_PORT_HTTP
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: CAPIF_PORT_HTTP
+            - name: CAPIF_PORT_HTTPS
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: CAPIF_PORT_HTTPS
+            - name: CALLBACK_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: CALLBACK_ADDRESS
+            - name: FRONTEND_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: FRONTEND_ADDRESS
+            - name: NEF_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: NEF_ADDRESS
+            - name: NEF_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: NEF_USER
+            - name: NEF_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: NEF_PASSWORD
+            - name: PATH_TO_CERTS
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: PATH_TO_CERTS
+          ports:
+          - containerPort: 5000
+---  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: johnst99/keycloak_img
+          env:
+            - name: KEYCLOAK_LOGLEVEL
+              value: DEBUG
+            - name: KEYCLOAK_USER
+              value: admin
+            - name: KEYCLOAK_PASSWORD
+              value: admin
+            - name: KEYCLOAK_IMPORT
+              value: /tmp/import/realm-export.json
+          ports:
+          - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: callbacks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: callbacks
+  template:
+    metadata:
+      labels:
+        app: callbacks
+    spec:
+      containers:
+        - name: callbacks
+          image: johnst99/callbacks
+          ports:
+          - containerPort: 5002
