@@ -17,6 +17,11 @@ spec:
           image: johnst99/iqb_netapp_img
           imagePullPolicy: Always 
           env:
+            - name: ENVIRONMENT_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: iqbit-configmap
+                  key: ENVIRONMENT_MODE
             - name: NETAPP_ID
               valueFrom:
                 configMapKeyRef:

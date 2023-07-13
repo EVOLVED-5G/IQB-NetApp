@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: iqbit-configmap
 data:
+  ENVIRONMENT_MODE: "production"
   NETAPP_ID: "myNetapp"
   KEYCLOAK_ADDRESS: "keycloak:8980/auth"
   KEYCLOAK_REALM: "EVOLVED-5G"

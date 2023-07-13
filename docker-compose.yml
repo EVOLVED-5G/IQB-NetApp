@@ -28,6 +28,7 @@ services:
     hostname: iqb_netapp
     #list of environment variables
     environment:
+      ENVIRONMENT_MODE: "production"
       NETAPP_ID: "myNetapp"
       NETAPP_NAME: "${netapp_name}"
       NETAPP_IP: "${netapp_ip}"
